@@ -1,0 +1,19 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #f4e8ca;
+
+}
+
+
+h1{
+    font-size: 2.8vw;
+}
+
+img{
+    width: 100%;
+    height: 50%;
+    
+}
+

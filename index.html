@@ -12,48 +12,51 @@
     <script src="assets/javascript/game.js"></script>
 </head>
 <body onload="startGame()">
-    <div class="container-fluid text-center">
-            <h1>Guess the Word Game!</h1>
+
+    <div class="container-fluid text-center bg m-0 p-0">
+            <h1>Guess the Word Game! <br> Countries in Europe Style</h1>
+            <img class=" .img-responsive m-0 p-0" src="assets/images/img-florence.jpeg" alt="image">
+    
     </div>
     
-    <div class="container-fluid text-center">
+    <!-- <div class="container-fluid text-center">
         
             <h2>Instructions</h2>
-    </div>
+    </div> -->
 
     <div class="container text-center">
-            <h3>Choose the Level of Difficuly:</h3>
-            <div class="row text-center">
-                <div class="col text-center" style="width: 10%">
-                    <button onclick="easyBtn()">Easy</button>
+            <h4>Choose the Level of Difficulty:</h4>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <button type="button" class="btn btn-outline-success m-2" onclick="easyBtn()">Easy</button>
                 </div>
-                <div class="col text-center">
-                    <button onclick="medBtn()">Medium</button>
+                <div>
+                    <button type="button" class="btn btn-outline-primary m-2" onclick="medBtn()">Medium</button>
                 </div>
-                <div class="col text-center">
-                    <button onclick="hardBtn()">Hard</button>
+                <div>
+                    <button type="button" class="btn btn-outline-danger m-2" onclick="hardBtn()">Hard</button>
                 </div>
             </div>
     </div>
 
-    <div class="container-fluid text-center">
-        <div class ="jumbotron p-5">
+    <div class="container text-center">
+        <div class ="jumbotron-fluid p-2">
             <div class="row">
-                <div clas="col-md-6  mx-auto picture" style="width: 30%; border: 5px red dotted;">
+                <div clas="col-md-6  mx-auto picture" style="width: 30%; border: 2px red dotted;">
                     <p>Picture Placeholder</p>
                 </div> 
 
-                <div clas="col-md-6  mx-auto guesses" style="width: 70%; border: 5px red dotted;">
-                    <!-- <h3 class="level"></h3> -->
+                <div clas="col-md-6  mx-auto guesses" style="width: 70%; border: 2px red dotted;">
+                    <h3 class="level"></h3>
                     <h5>Guess the Country in Europe that I am thinking of!</h5>
-                    <h6 style="border-bottom: 2px red solid;">Press A-Z to to Make Your Guess!</h6>
+                    <h6 style="border-bottom: 1px red solid;">Press a key A-Z to to Make Your Guess!</h6>
 
                     <h6>Wins:</h6>
                     <h5 class="wins"></h5>
                     <h6>Losses: </h6>
                     <h5 class="losses"></h5>
                     <h4>Current Word:</h4>
-                    <h5 class="currentWord"></h5>
+                    <h2 class="displayWord"></h2>
                     <h6>Number of Guesses Remaining:</h6>
                     <h5 class="guessLeft"></h5>
                     <h6>Letters Already Guessed</h6>
