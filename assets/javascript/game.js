@@ -4,7 +4,7 @@ var easyList =['ITALY', 'IRELAND','UNITED KINGDOM', 'SPAIN', 'PORTUGAL', 'GERMAN
 
 var wins = 0;                   // total number of wins
 var losses = 0;                 // total number of losses
-var displayWord;            //what word is displayed on 
+var displayWord;            //what word is displayed on the page
 var guessedLetter =[];       //letters guessed already
 var toGuess = [];       // how much of the word the user has guessed
 var guessLeft = 12;         // how many guesses have left
@@ -46,7 +46,9 @@ function hardBtn() {
     startGame();
 }
 
-// Starts the game by choosing a new word from list
+// Starts the game by choosing a new word from list, 
+// sets the guessedLetter array as empty,
+// creates a toGuess array that has as many "_" as there are characters in the word 
 function startGame() {
     word = wordList[Math.floor(Math.random() * wordList.length)];
     guessedLetter =[];
@@ -55,14 +57,15 @@ function startGame() {
 
     displayWord = document.querySelector('.displayWord');
 
+    // creates a toGuess array that has as many "_" as there are characters in the word 
     for (var i = 0; i <word.length; i++){
 
         if(word[i] == " "){
-            toGuess.push(" ")
+            toGuess.push(" ");
         
 
         }else{
-            toGuess.push("_")
+            toGuess.push("_");
  
         }
         
@@ -77,10 +80,12 @@ function startGame() {
     document.onkeyup = keyLetter;
 }
 
+// function that determines whether the user can keep playing, user has one, or user has lost
 function keyLetter(event){
     gameEnd = false;
 
     if (gameEnd == false){
+        // user can continue playing if guessLeft (the amount of guesses left is > 0 and if there are no "_" (characters) left to solve in word)
         if (guessLeft > 0 && toGuess.indexOf('_') > -1){
             if(event.which >= 65 && event.which <= 90){
                 key = event.key.toUpperCase();
@@ -88,6 +93,7 @@ function keyLetter(event){
             }  
         }
         else {
+            // user has guessed all characters so user has Won!
             if(toGuess.indexOf('_') == -1){
                 document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
                 wins++;
@@ -98,6 +104,7 @@ function keyLetter(event){
                 
 
             }
+            // user has not guessed all characters and has no guesses left so user has Lost!
             else{
                 document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
                 losses++;
@@ -113,9 +120,12 @@ function keyLetter(event){
 
 }
 
+// function that determines if the user's guess is a correct letter in the word
 function guessCorrect(){
     noKey = true;
     proceed = true;
+
+    // if the user hits a key that they already picked it does not change the guessedLetter array or the amount of guesses left (guessLeft)
     for (var x = 0; x < guessedLetter.length; x++){
         if (guessedLetter[x] == key || toGuess[x] == key ){
             proceed = false;
@@ -123,6 +133,7 @@ function guessCorrect(){
     }
 
         if(proceed == true){
+            // updates the toGuess array if the key pressed by the user is the same as a letter in the array
             for (var i = 0; i < word.length; i++){
                 if (word[i] == key){
                     toGuess[i] = word[i];
@@ -134,6 +145,7 @@ function guessCorrect(){
                 }
             }
             
+            // updates the guessedLetter array if the key pressed is not in the guessedLetter array already and is not a character of the word
             if(noKey == true){
 
                 guessedLetter.push(key);
