@@ -92,29 +92,34 @@ function keyLetter(event){
                 guessCorrect();
             }  
         }
-        else {
-            // user has guessed all characters so user has Won!
-            if(toGuess.indexOf('_') == -1){
-                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
-                wins++;
-                document.querySelector('.wins').innerHTML = wins;
-                gameEnd = true;
-                guessLeft = modeLeft;
-                document.onkeyup = startGame;
+        // else {
+        //     gameEnd = true;
+        //     document.onkeydown = startGame;
+
+            // document.onkeyup = startGame;
+            
+            // // user has guessed all characters so user has Won!
+            // if(toGuess.indexOf('_') == -1){
+            //     document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
+            //     wins++;
+            //     document.querySelector('.wins').innerHTML = wins;
+            //     gameEnd = true;
+            //     guessLeft = modeLeft;
+            //     document.onkeyup = startGame;
                 
 
-            }
-            // user has not guessed all characters and has no guesses left so user has Lost!
-            else{
-                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
-                losses++;
-                document.querySelector('.losses').innerHTML = losses;
-                gameEnd = true;
-                guessLeft = modeLeft;
-                document.onkeyup = startGame;
-            }
+            // }
+            // // user has not guessed all characters and has no guesses left so user has Lost!
+            // else{
+            //     document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
+            //     losses++;
+            //     document.querySelector('.losses').innerHTML = losses;
+            //     gameEnd = true;
+            //     guessLeft = modeLeft;
+            //     document.onkeyup = startGame;
+            // }
 
-        }
+        // }
     }
 
 
@@ -139,9 +144,39 @@ function guessCorrect(){
                     toGuess[i] = word[i];
                     displayWord.innerHTML = toGuess.join("");
                     noKey = false;
+
                     if(toGuess.indexOf('_') == -1){
-                        break;
+                        document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
+                        wins++;
+                        document.querySelector('.wins').innerHTML = wins;
+                        guessLeft = modeLeft;
+                        gameEnd = true;
+                        document.onkeyup = startGame;
                     }
+                    else{
+                        document.onkeyup = keyLetter;
+                    }   
+                        
+                        // document.onkeyup = startGame;
+
+
+
+
+
+                        // gameEnd = true;
+                        // guessLeft = modeLeft;
+                        // document.onkeyup = startGame;
+                        // break;
+                    // }
+                    // else{
+                    //     document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
+                    //     losses++;
+                    //     document.querySelector('.losses').innerHTML = losses;
+                    //     gameEnd = true;
+                    //     guessLeft = modeLeft;
+                    //     document.onkeyup = startGame;
+                    //     break;
+                    // }
                 }
             }
             
@@ -152,11 +187,34 @@ function guessCorrect(){
                 document.querySelector('.guessedLetter').innerText = guessedLetter;
                 guessLeft--;
                 document.querySelector('.guessLeft').innerText = guessLeft;
+                
+                
+                if (guessLeft == 0){
+                    document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
+                    losses++;
+                    document.querySelector('.losses').innerHTML = losses;
+                    guessLeft = modeLeft;
+                    gameEnd = true;
+                    document.onkeyup = startGame;
+                }
+                else{
+                    document.onkeyup = keyLetter;
+                }  
+                
+                // document.onkeyup = startGame;
+
+
+
+                    // gameEnd = true;
+                    // guessLeft = modeLeft;
+                    // document.onkeyup = startGame;
+                    // break;
+                // }
 
             }
         }
 
-    document.onkeyup = keyLetter;
+    // document.onkeyup = keyLetter;
 
 
 }
