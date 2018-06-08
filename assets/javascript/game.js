@@ -8,23 +8,20 @@ var losses = 0;                 // total number of losses (initially set to 0)
 var displayWord;                // selects the HTML element associated with '.displayWord' CSS selector
 var guessedLetter =[];          // array containing the incorrect letters already guessed by user
 var wordProgress = [];          // array containing "_" for the letters left to be guessed by user and the correctly guessed letters by user
-var guessLeft = 12;             // how many guesses the user has left (default = 12)
-var modeGuessLeft = 12;         // keeps track of starting number of guesses depending on level of difficulty selected by user (default = 12 corresponding with easyList)
-var word;                       // word from wordList that needs to be guessed 
-var wordList = easyList;        // wordList either easy, medium, or hard
-// var currentList;             // keeps track of List selected
-var key;                        // keeps track of key pressed
-var noKey;                      // if noKey = true then the incorrect letter was not previously guessed by user, 
-var proceed;
-var gameEnd;
+var guessLeft = 12;             // how many guesses the user has left (initial default = 12)
+var modeGuessLeft = 12;         // the starting number of guesses depending on level of difficulty selected by user (initial default = 12 corresponding with easyList)
+var word;                       // word from wordList that needs to be guessed by user
+var wordList = easyList;        // wordList based on default or button pressed: either easy, medium, or hard
+var key;                        // keeps track of the user key pressed
+var noKey;                      // if noKey = true then updates the guessedLetter array if the key pressed is an incorrect letter
+var proceed;                    // if proceed = true then the letter is not in the guessedLetter array or in the wordProgress array
              
 
 
 
-//Chooses the easy, medium, or hard difficulty word lists
+//Chooses the easy, medium, or hard difficulty word lists based on button pressed
 function easyBtn(){
     wordList = easyList;
-    // currentList = easyList;
     guessLeft = 12;
     modeGuessLeft = guessLeft;
     startGame();
@@ -33,7 +30,6 @@ function easyBtn(){
 
 function medBtn() {
     // wordList = medList;
-    // currentList = medList;
     guessLeft = 10;
     modeGuessLeft = guessLeft;
     startGame();
@@ -41,15 +37,14 @@ function medBtn() {
 
 function hardBtn() {
     // wordList = hardList;
-    // currentList = hardList;
     guessLeft = 8;
     modeGuessLeft = guessLeft;
     startGame();
 }
 
-// Starts the game by choosing a new word from list, 
+// Starts the game by choosing a new word from wordList, 
 // sets the guessedLetter array (incorrect letter guesses by user) as empty,
-// creates an wordProgress array that has as many "_" as there are characters in the word 
+// creates a wordProgress array that has as many "_" as there are characters in the word 
 function startGame() {
     word = wordList[Math.floor(Math.random() * wordList.length)];
     guessedLetter =[];
@@ -70,6 +65,8 @@ function startGame() {
         }        
     }
 
+    // displays the wordProgress array in the selected HTML element using CSS selector '.displayWord'
+    // .join("") method displays the array without ',' that are used to separate each element in the array
     displayWord.innerHTML = wordProgress.join("");
 
     document.querySelector('.guessLeft').innerText = guessLeft;
@@ -79,57 +76,61 @@ function startGame() {
     document.onkeyup = keyPress;
 }
 
-// function that determines whether the user can keep playing, user has one, or user has lost
+// user can continue playing if guessLeft (the amount of guesses left is > 0 and if there are no "_" (characters) left to solve in word)
+// stores string of letter key pressed in variable
 function keyPress(event){
-    gameEnd = false;
-
-    if (gameEnd == false){
-        // user can continue playing if guessLeft (the amount of guesses left is > 0 and if there are no "_" (characters) left to solve in word)
-        if (guessLeft > 0 && wordProgress.indexOf('_') > -1){
-            if(event.which >= 65 && event.which <= 90){
-                key = event.key.toUpperCase();
-                guessCorrect();
-            }  
-        }
-    }
+    if (guessLeft > 0 && wordProgress.indexOf('_') > -1){
+        if(event.which >= 65 && event.which <= 90){
+            key = event.key.toUpperCase();
+            checkIfGuessCorrect();
+        }  
+    } 
 
 }
 
 // function that determines if the user's guess is a correct letter in the word
-function guessCorrect(){
+function checkIfGuessCorrect(){
     noKey = true;
     proceed = true;
 
-    // if the user hits a key that they already picked it does not change the guessedLetter array or the amount of guesses left (guessLeft)
+    // if the user hits a incorrect letter key that they already picked, the guessedLetter array and the guessLeft number is unchanged
     for (var x = 0; x < guessedLetter.length; x++){
-        if (guessedLetter[x] == key || wordProgress[x] == key ){
+        if (guessedLetter[x] == key){
             proceed = false;
         }
     }
 
+    // if the user hits a correct letter key that they already picked, the guessLeft number is unchanged
+    for (var x = 0; x < wordProgress.length; x++){
+        if (wordProgress[x] == key ){
+            proceed = false;
+        }
+    }
+
+
+    // only executed if the letter is not in the guessedLetter array or in the wordProgress array
     if(proceed == true){
-        // updates the wordProgress array if the key pressed by the user is the same as a letter in the array
+        // updates the wordProgress array if the key pressed by the user is the same as a letter in the word
         for (var i = 0; i < word.length; i++){
             if (word[i] == key){
                 wordProgress[i] = word[i];
                 displayWord.innerHTML = wordProgress.join("");
                 noKey = false;
 
+                // if the user has completely guessed the word then user wins
                 if(wordProgress.indexOf('_') == -1){
                     document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
                     wins++;
                     document.querySelector('.wins').innerHTML = wins;
                     guessLeft = modeGuessLeft;
-                    gameEnd = true;
                     document.onkeyup = startGame;
-                }
-                else{
+                }else{
                     document.onkeyup = keyPress;
                 }   
             }
         }
         
-        // updates the guessedLetter array if the key pressed is not in the guessedLetter array already and is not a character of the word
+        // updates the guessedLetter array if the key pressed is an incorrect letter
         if(noKey == true){
 
             guessedLetter.push(key);
@@ -137,16 +138,14 @@ function guessCorrect(){
             guessLeft--;
             document.querySelector('.guessLeft').innerText = guessLeft;
             
-            
+            // if the number of guesses left (guessLeft) is 0 then user loses
             if (guessLeft == 0){
                 document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
                 losses++;
                 document.querySelector('.losses').innerHTML = losses;
                 guessLeft = modeGuessLeft;
-                gameEnd = true;
                 document.onkeyup = startGame;
-            }
-            else{
+            }else{
                 document.onkeyup = keyPress;
             } 
         }
