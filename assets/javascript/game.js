@@ -95,24 +95,10 @@ function checkIfGuessCorrect(){
     incorrectKey = true;
     proceed = true;
 
+    // if the user hits incorrect letter or a correct letter that they have already picked, the guessedLetter array and the guessLeft number are unchanged.
     if(guessedLetter.indexOf(letter) > -1 || wordProgress.indexOf(letter) > -1 ){
         proceed = false;
     }
-
-    // if the user hits a incorrect letter key that they already picked, the guessedLetter array and the guessLeft number is unchanged
-    // for (var x = 0; x < guessedLetter.length; x++){
-    //     if (guessedLetter[x] == letter){
-    //         proceed = false;
-    //     }
-    // }
-
-    // if the user hits a correct letter key that they already picked, the guessLeft number is unchanged
-    // for (var x = 0; x < wordProgress.length; x++){
-    //     if (wordProgress[x] == letter ){
-    //         proceed = false;
-    //     }
-    // }
-
 
     // only executed if the letter is not in the guessedLetter array or in the wordProgress array
     if(proceed == true){
