@@ -6,33 +6,66 @@ body, html {
 
 }
 
-/* html { font-size: 1rem; }
+html { font-size: 1rem; }
 
 @media (min-width: 576px) {
-    html { font-size: 0.2rem; }
+    html { font-size: 1.1rem; }
 }
 @media (min-width: 768px) {
-    html { font-size: 0.3rem; }
+    html { font-size: 1.2rem; }
 }
 @media (min-width: 992px) {
-    html { font-size: 0.4rem; }
+    html { font-size: 1.3rem; }
 }
 @media (min-width: 1200px) {
-    html { font-size: 1rem; }
-} */
+    html { font-size: 1.4rem; }
+}
 
-/* 
+
 h1{
-    font-size: 50px;
-} */
+    font-size: 1.9rem;
+    font-weight: bold;
+}
 
-img{
+.italics{
+    font-style: italic;
+    font-weight:bolder;
+}
+
+.florence{
     width: 100%;
     height: 50%;
     
+}
+
+.globe{
+    width: 80%;
 }
 
 .displayWord{
     /* font-size: 4vw; */
     letter-spacing: 11px;
 }
+
+.guessedLetter{
+    letter-spacing: 2px;
+}
+
+.jumbotron-fluid{
+    position: static;
+    text-align: center;
+}
+
+.text-block {
+    position: fixed;
+    top: 0%;
+    background-color:rgb(199, 77, 39, 0.6);
+    color: #ead9b2;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: center;
+    
+}
+
+
+

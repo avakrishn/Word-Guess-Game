@@ -2,6 +2,8 @@
 // Word Lists (default = easyList)
 var easyList =['ITALY', 'IRELAND','UNITED KINGDOM', 'SPAIN', 'PORTUGAL', 'GERMANY', 'AUSTRIA', 'BELGIUM', 'CZECH REPUBLIC', 'FRANCE'];
 
+// var easyPic =
+
 //Global variables
 var wins = 0;                   // total number of wins (initially set to 0)
 var losses = 0;                 // total number of losses (initially set to 0)
@@ -119,7 +121,7 @@ function checkIfGuessCorrect(){
 
                 // if the user has completely guessed the word then user wins
                 if(wordProgress.indexOf('_') == -1){
-                    document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Win!, click a level or press a key to play again<p>";
+                    document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 30px; color: green;'>You Win!<p> <p style='letter-spacing: 0px; font-size: 30px;'color:black;'>Click a level or press a key to play again<p>";
                     wins++;
                     document.querySelector('.wins').innerHTML = wins;
                     guessLeft = modeGuessLeft;
@@ -140,7 +142,7 @@ function checkIfGuessCorrect(){
             
             // if the number of guesses left (guessLeft) is 0 then user loses
             if (guessLeft == 0){
-                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 2vw; color: green;'>You Lose!, click a level or press a key to play again<p>";
+                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 20px; color: green;'>You Lose! Click a level or press a key to play again<p>";
                 losses++;
                 document.querySelector('.losses').innerHTML = losses;
                 guessLeft = modeGuessLeft;
