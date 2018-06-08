@@ -14,8 +14,8 @@ var guessLeft = 12;             // how many guesses the user has left (initial d
 var modeGuessLeft = 12;         // the starting number of guesses depending on level of difficulty selected by user (initial default = 12 corresponding with easyList)
 var word;                       // word from wordList that needs to be guessed by user
 var wordList = easyList;        // wordList based on default or button pressed: either easy, medium, or hard
-var key;                        // keeps track of the user key pressed
-var noKey;                      // if noKey = true then updates the guessedLetter array if the key pressed is an incorrect letter
+var letter;                     // keeps track of the user letter pressed
+var incorrectKey;               // if incorrectKey = true then updates the guessedLetter array if the key pressed is an incorrect letter
 var proceed;                    // if proceed = true then the letter is not in the guessedLetter array or in the wordProgress array
              
 
@@ -83,7 +83,7 @@ function startGame() {
 function keyPress(event){
     if (guessLeft > 0 && wordProgress.indexOf('_') > -1){
         if(event.which >= 65 && event.which <= 90){
-            key = event.key.toUpperCase();
+            letter = event.key.toUpperCase();
             checkIfGuessCorrect();
         }  
     } 
@@ -92,36 +92,40 @@ function keyPress(event){
 
 // function that determines if the user's guess is a correct letter in the word
 function checkIfGuessCorrect(){
-    noKey = true;
+    incorrectKey = true;
     proceed = true;
 
-    // if the user hits a incorrect letter key that they already picked, the guessedLetter array and the guessLeft number is unchanged
-    for (var x = 0; x < guessedLetter.length; x++){
-        if (guessedLetter[x] == key){
-            proceed = false;
-        }
+    if(guessedLetter.indexOf(letter) > -1 || wordProgress.indexOf(letter) > -1 ){
+        proceed = false;
     }
 
+    // if the user hits a incorrect letter key that they already picked, the guessedLetter array and the guessLeft number is unchanged
+    // for (var x = 0; x < guessedLetter.length; x++){
+    //     if (guessedLetter[x] == letter){
+    //         proceed = false;
+    //     }
+    // }
+
     // if the user hits a correct letter key that they already picked, the guessLeft number is unchanged
-    for (var x = 0; x < wordProgress.length; x++){
-        if (wordProgress[x] == key ){
-            proceed = false;
-        }
-    }
+    // for (var x = 0; x < wordProgress.length; x++){
+    //     if (wordProgress[x] == letter ){
+    //         proceed = false;
+    //     }
+    // }
 
 
     // only executed if the letter is not in the guessedLetter array or in the wordProgress array
     if(proceed == true){
-        // updates the wordProgress array if the key pressed by the user is the same as a letter in the word
+        // updates the wordProgress array if the letter pressed by the user is the same as a letter in the word
         for (var i = 0; i < word.length; i++){
-            if (word[i] == key){
+            if (word[i] == letter){
                 wordProgress[i] = word[i];
                 displayWord.innerHTML = wordProgress.join("");
-                noKey = false;
+                incorrectKey = false;
 
                 // if the user has completely guessed the word then user wins
                 if(wordProgress.indexOf('_') == -1){
-                    document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 30px; color: green;'>You Win!<p> <p style='letter-spacing: 0px; font-size: 30px;'color:black;'>Click a level or press a key to play again<p>";
+                    document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 30px; color: green;'>You Win!<p> <p style='letter-spacing: 0px; font-size: 30px;'color:black;'>Click a level or press a letter to play again<p>";
                     wins++;
                     document.querySelector('.wins').innerHTML = wins;
                     guessLeft = modeGuessLeft;
@@ -132,17 +136,17 @@ function checkIfGuessCorrect(){
             }
         }
         
-        // updates the guessedLetter array if the key pressed is an incorrect letter
-        if(noKey == true){
+        // updates the guessedLetter array if the letter pressed is an incorrect letter
+        if(incorrectKey == true){
 
-            guessedLetter.push(key);
+            guessedLetter.push(letter);
             document.querySelector('.guessedLetter').innerText = guessedLetter;
             guessLeft--;
             document.querySelector('.guessLeft').innerText = guessLeft;
             
             // if the number of guesses left (guessLeft) is 0 then user loses
             if (guessLeft == 0){
-                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 20px; color: green;'>You Lose! Click a level or press a key to play again<p>";
+                document.querySelector('.result').innerHTML = "<p style='letter-spacing: 0px; font-size: 20px; color: green;'>You Lose! Click a level or press a letter to play again<p>";
                 losses++;
                 document.querySelector('.losses').innerHTML = losses;
                 guessLeft = modeGuessLeft;
