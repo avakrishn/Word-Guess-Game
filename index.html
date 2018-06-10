@@ -3,57 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Word Guess Game</title>
+    <title>Guess the Word!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Bungee|Niconne|Playball" rel="stylesheet">
     
     <script src="assets/javascript/game.js"></script>
 </head>
 <body onload="startGame()">
-
+    <div class='parallax'></div>
     <div class="jumbotron-fluid text-center bg m-0 p-0">
-            <img class=" .img-responsive m-0 p-0 florence" src="assets/images/florence-cropped.jpg" alt="Intro image of Florence">
+            <img class=" .img-responsive m-0 p-0 florence" src="assets/images/florence.jpg" alt="Intro image of Florence">
             <div class="text-block">
-                <h1>Guess the Word Game!</h1> 
+                <h1 class="title">Guess the Word</h1> 
                 <h1 class="italics">Countries in Europe</h1>
             </div>
-    </div>
-    
-    <!-- <div class="container-fluid text-center">
-        
-            <h2>Instructions</h2>
-    </div> -->
-
-    <div class="container text-center">
-            <div class="d-flex justify-content-center">
-                <h5 style="margin-top: 20px" >Choose the Level of Difficulty:</h5>
-            
-                <!-- <div> -->
-                    <button type="button" class="btn btn-success m-2" onclick="easyBtn()">Easy</button>
-                <!-- </div> -->
-                <!-- <div> -->
-                    <button type="button" class="btn btn-primary m-2" onclick="medBtn()">Medium</button>
-                <!-- </div> -->
-                <!-- <div> -->
-                    <button type="button" class="btn btn-danger m-2" onclick="hardBtn()">Hard</button>
-                <!-- </div> -->
+            <div class="container text-center level">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="margin-top: 20px" >Choose the Level of Difficulty:</h5>
+                    
+                        <!-- <div> -->
+                            <button type="button" class="btn btn-success m-2" onclick="easyBtn()">Easy</button>
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <button type="button" class="btn btn-primary m-2" onclick="medBtn()">Medium</button>
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <button type="button" class="btn btn-danger m-2" onclick="hardBtn()">Hard</button>
+                        <!-- </div> -->
+                    </div>
             </div>
     </div>
 
-    <div class="container text-center">
+    
+
+    <div class="container text-center game">
         <!-- <div class ="jumbotron-fluid p-2"> -->
             <table>
-                <tr>
-                    <td style="width: 50%;  border: 2px red dotted; vertical-align: middle;">
-                            <h4 class="result"></h4>
-                            <img class="img-responsive m-0 p-0 globe" src="assets/images/world.jpg" alt="Picture of Globe">
+                <tr class="row">
+                    <td class="col-md-6 m-0 p-0" style="width: 100%;  border: 2px red dotted; vertical-align: middle;">
+                            <img id="globe" class="img-responsive m-0 p-0 " src="assets/images/florence-cropped-copy.jpg" alt="Picture of Globe or Country">
+                            <h4 class="winOutcome"></h4>
+                            <h4 class="loseOutcome"></h4>
                     </td>
-                    <td style="width: 100%; border: 2px red dotted; vertical-align: top;">
+                    <td class="col-md-6 outcome m-0 p-0 " style="width: 100%; border: 2px red dotted; vertical-align: top;">
                                 <!-- <h3 class="level"></h3> -->
                             
-                                <h6>Guess the Country in Europe that I am thinking of!</h6>
+                                <h6 id="gameHeader">Guess the Country in Europe!</h6>
                                 <h7>Press a key A-Z to to Make Your Guess!</h7>
                                 <hr class="border_bottom m-0 p-0" style="border-bottom: 1px red solid;">
             
@@ -62,12 +60,14 @@
                                 <!-- <h5 class="wins"></h5> -->
                                 <h7>Losses: <span class= "losses"></span></h7>
                                 <!-- <h5 class="losses"></h5> -->
+
                                 <h5>Current Word:</h5>
                                 <h4 class="displayWord"></h4>
                                 <!-- <h4 class="result"></h4> -->
                                 <h7>Number of Guesses Remaining: <span class="guessLeft"></span></h7>
                                 <br>
-                                <h7 class="letters p-3">Letters Already Guessed: <span class="guessedLetter"></span></h7>
+                                <h7 class="letters p-3">Letters Already Guessed: </h7>
+                                <h6 class="guessedLetter"></h6>
                                 
                     </td>
                 </tr>
@@ -76,7 +76,6 @@
             </div>
         <!-- </div> -->
     </div>
-    <div></div>
     
 </body>
 </html>

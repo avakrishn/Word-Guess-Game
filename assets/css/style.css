@@ -4,7 +4,9 @@ body, html {
     margin: 0;
     background-color: #f4e8ca;
 
+    
 }
+
 
 html { font-size: 1rem; }
 
@@ -23,23 +25,46 @@ html { font-size: 1rem; }
 
 
 h1{
-    font-size: 1.9rem;
+    font-size: 3.3rem;
     font-weight: bold;
+    
 }
+
+.title{
+    font-family: 'Bungee', cursive;
+    text-shadow: 4px 4px rgb(199, 77, 39);
+    color: #ffb535;
+}
+
+#gameHeader{
+    background-color: rgb(199, 77, 39, 0.8);
+    color: #f4e8ca;
+    font-size: 1.3rem;
+    padding: 5px;
+   
+    
+}
+
 
 .italics{
     font-style: italic;
     font-weight:bolder;
+    font-family: 'Berkshire Swash', cursive;
+    text-shadow: 4px 4px #1f1e1e;
+    color: rgb(199, 77, 39);
+
 }
 
 .florence{
     width: 100%;
     height: 50%;
+    display: block;
+    
     
 }
 
-.globe{
-    width: 80%;
+#globe{
+    width: 100%;
 }
 
 .displayWord{
@@ -52,19 +77,52 @@ h1{
 }
 
 .jumbotron-fluid{
-    position: static;
+    position: relative;
     text-align: center;
 }
 
 .text-block {
-    position: fixed;
-    top: 0%;
-    background-color:rgb(199, 77, 39, 0.6);
-    color: #ead9b2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#f4e8ca;
+    /* color: #ead9b2; */
     padding-left: 12px;
     padding-right: 12px;
     text-align: center;
     
+    
+}
+
+
+.outcome{
+    position: relative;
+    text-align: center;
+}
+
+.winOutcome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(62, 172, 12, 0.8);
+    letter-spacing: 0px; 
+    font-size: 1.5rem; 
+    border-radius: 25px;
+    color: white;
+}
+
+.loseOutcome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(209, 60, 15, 0.8);
+    letter-spacing: 0px; 
+    font-size: 1.5rem; 
+    border-radius: 25px;
+    color: white;
 }
 
 
