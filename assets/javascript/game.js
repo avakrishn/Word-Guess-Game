@@ -82,6 +82,8 @@ function startGame() {
     document.querySelector('.winOutcome').innerHTML ="";
     document.querySelector('.loseOutcome').innerHTML ="";
     document.getElementById('globe').src= "assets/images/antique.jpg";
+    document.querySelector('.wins').innerHTML = wins;
+    document.querySelector('.losses').innerHTML = losses;
 
     document.onkeyup = keyPress;
 }

@@ -22,13 +22,13 @@
             </div>
             <div class="container text-center level">
                     <div class="d-flex justify-content-center">
-                        <h5 style="margin-top: 20px" >Choose the Level of Difficulty:</h5>
+                        <h5 class="difficulty" style="margin-top: 20px" >Choose the Level of Difficulty:</h5>
                     
                         <!-- <div> -->
                             <button type="button" class="btn btn-success m-2" onclick="easyBtn()">Easy</button>
                         <!-- </div> -->
                         <!-- <div> -->
-                            <button type="button" class="btn btn-primary m-2" onclick="medBtn()">Medium</button>
+                            <button type="button" class="btn btn-warning m-2" onclick="medBtn()">Medium</button>
                         <!-- </div> -->
                         <!-- <div> -->
                             <button type="button" class="btn btn-danger m-2" onclick="hardBtn()">Hard</button>
@@ -43,31 +43,41 @@
         <!-- <div class ="jumbotron-fluid p-2"> -->
             <table>
                 <tr class="row">
-                    <td class="col-md-6 m-0 p-0" style="width: 100%;  border: 2px red dotted; vertical-align: middle;">
+                    <td class="left-column col-md-6 m-0 p-0" style="width: 100%;  border: 2px rgba(199, 77, 39) dotted; background-color: rgba(199, 77, 39, 0.6)">
                             <img id="globe" class="img-responsive m-0 p-0 " src="assets/images/antique.jpg" alt="Picture of Globe or Country">
+                            <div id="music"></div>
                             <h4 class="winOutcome"></h4>
                             <h4 class="loseOutcome"></h4>
                     </td>
-                    <td class="col-md-6 outcome m-0 p-0 " style="width: 100%; border: 2px red dotted; vertical-align: top;">
+                    <td class=" right-column col-md-6 outcome m-0 p-0 " style="width: 100%; border: 2px rgba(199, 77, 39) dotted; vertical-align: top;">
                                 <!-- <h3 class="level"></h3> -->
-                            
-                                <h6 id="gameHeader">Guess the Country in Europe!</h6>
-                                <h7>Press a key A-Z to to Make Your Guess!</h7>
-                                <hr class="border_bottom m-0 p-0" style="border-bottom: 1px red solid;">
-            
-                                <h7>Wins: <span class= "wins"></span> </h7>
-                                <br>
-                                <!-- <h5 class="wins"></h5> -->
-                                <h7>Losses: <span class= "losses"></span></h7>
-                                <!-- <h5 class="losses"></h5> -->
+                                <div class="mb-2">
+                                    <h6 class="gameHeader">Guess the Country in Europe!</h6>
+                                    <h5 class= 'AZ'>Press A-Z to Guess!</h5>
+                                </div>
+                                
+                            <table>
+                                <!-- <hr class="border_bottom m-0 p-0" style="border-bottom: 1px red solid;"> -->
+                                <div class="row m-0 p-0  justify-content-center">
+                                    <div class="col-md-4 m-1 p-0 mr-3  border border-success" style=" background-color: rgba(94, 241, 9, 0.4); border-radius: 25px;" >
+                                        <h7 style="border-bottom: 2px black solid;">Wins</h7>
+                                        <h6 class= "wins mt-1"></h6>
+                                    </div>
+                                    <div class="col-md-4 m-1 p-0 ml-3 border border-danger" style="background-color: rgb(255, 0, 0, 0.4); border-radius: 25px;">
+                                        <h7 style="border-bottom: 2px black solid;">Losses</h7>
+                                        <h6 class= "losses mt-1"></h6>
+                                    </div>
+                                </tr>
+                            </table>
 
-                                <h5>Current Word:</h5>
-                                <h4 class="displayWord"></h4>
-                                <!-- <h4 class="result"></h4> -->
-                                <h7>Number of Guesses Remaining: <span class="guessLeft"></span></h7>
-                                <br>
-                                <h7 class="letters p-3">Letters Already Guessed: </h7>
-                                <h6 class="guessedLetter"></h6>
+                                <h4>Current Word:</h4>
+                                <h3 class="displayWord mb-2"></h3>
+                                <h5 class="guessRem">Number of Guesses Remaining: </h5>
+                                <!-- <br> -->
+                                <h5 class="guessLeft mb-2"></h5>
+                                <!-- <br> -->
+                                <h5 class="letters">Letters Already Guessed: </h5>
+                                <h5 class="guessedLetter mb-2"></h5>
                                 
                     </td>
                 </tr>
