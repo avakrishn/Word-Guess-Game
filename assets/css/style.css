@@ -30,6 +30,10 @@ h1{
 
 }
 
+.game{
+    margin-bottom: 30px;
+}
+
 
 .gameHeader{
     background-color: rgb(199, 77, 39, 0.9);
@@ -40,8 +44,6 @@ h1{
    
     
 }
-
-
 
 .florence{
     width: 100%;
@@ -90,18 +92,6 @@ h1{
     text-align: center;
 }
 
-/* .winOutcome{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(62, 172, 12, 0.9);
-    letter-spacing: 0px; 
-    font-size: 1.5rem; 
-    border-radius: 25px;
-    color: white;
-}*/
-
 .loseOutcome{
     position: absolute;
     top: 50%;
@@ -117,10 +107,12 @@ h1{
 
 .winOutcome{
     color: green;
+    background-color: rgb(0, 128, 0, 0.2);
+    font-weight: bolder;
 
 }
 
-.anthem{
+#source{
     font-size: 12px;
 }
 
@@ -145,7 +137,7 @@ h1{
     font-weight: bolder;
 }
 
-.difficulty, .AZ, .guessRem, .letters, .anthem{
+.difficulty, .AZ, .guessRem, .letters, #source{
     color: rgb(199, 77, 39);
 }
 

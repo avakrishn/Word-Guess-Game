@@ -4,7 +4,7 @@ var easyList =['DENMARK', 'FINLAND', 'FRANCE', 'GERMANY', 'GREECE', 'HUNGARY', '
 var easyAudio =['dk', 'fi', 'fr', 'de', 'gr', 'hu', 'ie', 'it', 'es', 'gl', 'ch', 'se', 'sco', 'gb'];
 
 var medList =['AUSTRIA', 'BELGIUM', 'BULGARIA' , 'CROATIA' ,'CZECH REPUBLIC', 'NETHERLANDS', 'NORWAY', 'POLAND', 'PORTUGAL','ROMANIA']; 
-var medAudio = [];
+var medAudio = ['at','be', ];
 
 var hardList =['ALBANIA', 'BELARUS', 'BASQUE', 'CATALONIA', 'CYPRUS', 'VATICAN CITY', 'ESTONIA','LIECHTENSTEIN','LITHUANIA', 'LUXEMBOURG', 'MACEDONIA', 'MONTENEGRO'];
 var hardAudio = [];
@@ -29,6 +29,7 @@ var incorrectKey;               // if incorrectKey = true then updates the guess
 var proceed;                    // if proceed = true then the letter is not in the guessedLetter array or in the wordProgress array
 var audio;              
 var anthem;
+var isPlaying;
 
 
 //Chooses the easy, medium, or hard difficulty word lists based on button pressed
@@ -55,6 +56,19 @@ function hardBtn() {
     modeGuessLeft = guessLeft;
     audioList = hardAudio;
     startGame();
+}
+
+
+function playPauseAudio(){
+    if (isPlaying){
+        audio.pause();
+        isPlaying = false;
+    }
+    else{
+        audio.play();
+        isPlaying = true;
+    }
+    
 }
 
 // Starts the game by choosing a new word from wordList, 
@@ -132,16 +146,18 @@ function checkIfGuessCorrect(){
 
                 // if the user has completely guessed the word then user wins
                 if(wordProgress.indexOf('_') == -1){
-                    // document.querySelector('.winOutcome').innerHTML = "<p>You Win!</p> <p>Click a level or press a letter to play again</p>";
                     wins++;
                     document.querySelector('.wins').innerHTML = wins;
                     guessLeft = modeGuessLeft;
                     document.getElementById('globe').src= "assets/images/flags/" + word + ".png";
                     document.querySelector('.winOutcome'). innerHTML = "You Win! Press A-Z to Play Again!";
-                    document.querySelector('.anthem').innerHTML = "National Anthem: http://www.nationalanthems.info/"
                     audio = document.getElementById('audio');
                     audio.src= "http://www.nationalanthems.info/"+ anthem +".mp3";
                     audio.play();
+                    isPlaying = true;
+                    document.getElementById("info").style.display = "inline";
+                    document.getElementById("pausePlay").style.display = "inline";
+                    document.getElementById("source").style.display = "inline";
                     document.onkeyup = startGame;
                 }else{
                     document.onkeyup = keyPress;
