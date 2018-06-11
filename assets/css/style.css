@@ -90,7 +90,7 @@ h1{
     text-align: center;
 }
 
-.winOutcome{
+/* .winOutcome{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -100,7 +100,7 @@ h1{
     font-size: 1.5rem; 
     border-radius: 25px;
     color: white;
-}
+}*/
 
 .loseOutcome{
     position: absolute;
@@ -112,6 +112,16 @@ h1{
     font-size: 1.5rem; 
     border-radius: 25px;
     color: white;
+    text-align: center;
+} 
+
+.winOutcome{
+    color: green;
+
+}
+
+.anthem{
+    font-size: 12px;
 }
 
 .btn-warning{
@@ -135,7 +145,7 @@ h1{
     font-weight: bolder;
 }
 
-.difficulty, .AZ, .guessRem, .letters{
+.difficulty, .AZ, .guessRem, .letters, .anthem{
     color: rgb(199, 77, 39);
 }
 

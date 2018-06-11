@@ -1,9 +1,13 @@
 
 // Word Lists (default = easyList)
 var easyList =['DENMARK', 'FINLAND', 'FRANCE', 'GERMANY', 'GREECE', 'HUNGARY', 'IRELAND', 'ITALY', 'SPAIN', 'GREENLAND', 'SWITZERLAND', 'SWEDEN', 'SCOTLAND', 'UNITED KINGDOM'];
-var medList =['AUSTRIA', 'BELGIUM', 'BULGARIA' , 'CROATIA' ,'CZECH REPUBLIC', 'NETHERLANDS', 'NORWAY', 'POLAND', 'PORTUGAL','ROMANIA']; 
-var hardList =['ALBANIA', 'BELARUS', 'BASQUE', 'CATALONIA', 'CYPRUS', 'VATICAN CITY', 'ESTONIA','LIECHTENSTEIN','LITHUANIA', 'LUXEMBOURG', 'MACEDONIA', 'MONTENEGRO'];
+var easyAudio =['dk', 'fi', 'fr', 'de', 'gr', 'hu', 'ie', 'it', 'es', 'gl', 'ch', 'se', 'sco', 'gb'];
 
+var medList =['AUSTRIA', 'BELGIUM', 'BULGARIA' , 'CROATIA' ,'CZECH REPUBLIC', 'NETHERLANDS', 'NORWAY', 'POLAND', 'PORTUGAL','ROMANIA']; 
+var medAudio = [];
+
+var hardList =['ALBANIA', 'BELARUS', 'BASQUE', 'CATALONIA', 'CYPRUS', 'VATICAN CITY', 'ESTONIA','LIECHTENSTEIN','LITHUANIA', 'LUXEMBOURG', 'MACEDONIA', 'MONTENEGRO'];
+var hardAudio = [];
 
 
 
@@ -19,11 +23,12 @@ var word;                       // word from wordList that needs to be guessed b
 var index;
 var image;
 var wordList = easyList;        // wordList based on default or button pressed: either easy, medium, or hard
+var audioList = easyAudio;
 var letter;                     // keeps track of the user letter pressed
 var incorrectKey;               // if incorrectKey = true then updates the guessedLetter array if the key pressed is an incorrect letter
 var proceed;                    // if proceed = true then the letter is not in the guessedLetter array or in the wordProgress array
-             
-
+var audio;              
+var anthem;
 
 
 //Chooses the easy, medium, or hard difficulty word lists based on button pressed
@@ -31,6 +36,7 @@ function easyBtn(){
     wordList = easyList;
     guessLeft = 12;
     modeGuessLeft = guessLeft;
+    audioList = easyAudio;
     startGame();
 
 }
@@ -39,6 +45,7 @@ function medBtn() {
     wordList = medList;
     guessLeft = 11;
     modeGuessLeft = guessLeft;
+    audioList = medAudio;
     startGame();
 }
 
@@ -46,6 +53,7 @@ function hardBtn() {
     wordList = hardList;
     guessLeft = 10;
     modeGuessLeft = guessLeft;
+    audioList = hardAudio;
     startGame();
 }
 
@@ -55,6 +63,7 @@ function hardBtn() {
 function startGame() {
     index = Math.floor(Math.random() * wordList.length)
     word = wordList[index];
+    anthem = audioList[index];
     guessedLetter =[];
     wordProgress = [];
 
@@ -84,6 +93,8 @@ function startGame() {
     document.getElementById('globe').src= "assets/images/antique.jpg";
     document.querySelector('.wins').innerHTML = wins;
     document.querySelector('.losses').innerHTML = losses;
+    document.querySelector('.AZ'). innerHTML = "Press A-Z to Guess!";
+    
 
     document.onkeyup = keyPress;
 }
@@ -126,6 +137,11 @@ function checkIfGuessCorrect(){
                     document.querySelector('.wins').innerHTML = wins;
                     guessLeft = modeGuessLeft;
                     document.getElementById('globe').src= "assets/images/flags/" + word + ".png";
+                    document.querySelector('.winOutcome'). innerHTML = "You Win! Press A-Z to Play Again!";
+                    document.querySelector('.anthem').innerHTML = "National Anthem: http://www.nationalanthems.info/"
+                    audio = document.getElementById('audio');
+                    audio.src= "http://www.nationalanthems.info/"+ anthem +".mp3";
+                    audio.play();
                     document.onkeyup = startGame;
                 }else{
                     document.onkeyup = keyPress;
@@ -143,7 +159,7 @@ function checkIfGuessCorrect(){
             
             // if the number of guesses left (guessLeft) is 0 then user loses
             if (guessLeft == 0){
-                document.querySelector('.loseOutcome').innerHTML = "<p>You Lose!</p> <p>Click a level or press a letter to play again</p>";
+                document.querySelector('.loseOutcome').innerHTML = "<p>You Lose!</p> <p>Click a level or press A-Z to Play Again!</p>";
                 losses++;
                 document.querySelector('.losses').innerHTML = losses;
                 document.getElementById('globe').src= "assets/images/antique.jpg";
