@@ -4,10 +4,10 @@ var easyList =['DENMARK', 'FINLAND', 'FRANCE', 'GERMANY', 'GREECE', 'HUNGARY', '
 var easyAudio =['dk', 'fi', 'fr', 'de', 'gr', 'hu', 'ie', 'it', 'es', 'gl', 'ch', 'se', 'sco', 'gb'];
 
 var medList =['AUSTRIA', 'BELGIUM', 'BULGARIA' , 'CROATIA' ,'CZECH REPUBLIC', 'NETHERLANDS', 'NORWAY', 'POLAND', 'PORTUGAL','ROMANIA']; 
-var medAudio = ['at','be', ];
+var medAudio = ['at','be','bg', 'hr', 'cz', 'nl', 'no', 'pl', 'pt', 'ro'];
 
 var hardList =['ALBANIA', 'BELARUS', 'BASQUE', 'CATALONIA', 'CYPRUS', 'VATICAN CITY', 'ESTONIA','LIECHTENSTEIN','LITHUANIA', 'LUXEMBOURG', 'MACEDONIA', 'MONTENEGRO'];
-var hardAudio = [];
+var hardAudio = ['al', 'by','eus', 'cat', 'gr', 'va', 'ee', 'li', 'lt', 'lu', 'mk', 'me'];
 
 
 
@@ -180,7 +180,13 @@ function checkIfGuessCorrect(){
                 document.querySelector('.losses').innerHTML = losses;
                 document.getElementById('globe').src= "assets/images/antique.jpg";
                 guessLeft = modeGuessLeft;
+                audio.pause();
+                document.getElementById("info").style.display = "none";
+                document.getElementById("pausePlay").style.display = "none";
+                document.getElementById("source").style.display = "none";
+
                 document.onkeyup = startGame;
+
             }else{
                 document.onkeyup = keyPress;
             } 
