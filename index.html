@@ -8,10 +8,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Bungee|Niconne|Playball" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
     <script src="assets/javascript/game.js"></script>
 </head>
@@ -41,40 +40,40 @@
 
     <div class="container text-center d-flex align-items-center justify-content-center">
         <h5 id = "country" class = "difficulty mr-2"></h5>
-        <h7 id ='info' class= "difficulty" style="display: none;">National Anthem Audio:</h7>
+        <h7 id ='info' class= "difficulty">National Anthem Audio:</h7>
         
-        <button onclick="playPauseAudio()"  id ='pausePlay' type='button' class='btn btn-primary btn-sm m-2' style="display: none;">
+        <button onclick="playPauseAudio()"  id ='pausePlay' type='button' class='btn btn-primary btn-sm m-2'>
             <i class="fas fa-play fa-xs"></i>   
             <i class="fas fa-pause fa-xs"></i>
         </button>
         
-        <a  id ="source" style="display: none;" href="http://www.nationalanthems.info/" target="_blank">http://www.nationalanthems.info/</a>
+        <a id ="source" href="http://www.nationalanthems.info/" target="_blank">http://www.nationalanthems.info/</a>
     </div>
 
     <div class="container justify-content-center game">
             <table>
                 <tr class="row">
-                    <td class="left-column col-md-6 m-0 p-0" style="width: 100%;  border: 2px rgba(199, 77, 39) dotted; background-color: rgba(199, 77, 39, 0.6)">
+                    <td class="left-column col-md-6 m-0 p-0">
                             <img id="globe" class="img-responsive m-0 p-0 " src="assets/images/antique.jpg" alt="Picture of Globe or Country">
                             <h5 class="loseOutcome"></h5>
                             
                     </td>
-                    <td class="right-column col-md-6 outcome m-0 p-0 " style="width: 100%; border: 2px rgba(199, 77, 39) dotted; vertical-align: top;">
+                    <td class="right-column col-md-6 outcome m-0 p-0 ">
                         <div class="mb-2">
                             <h6 class="gameHeader">Guess the Country in Europe!</h6>
-                            <h5 class= 'AZ'>Press A-Z to Guess!</h5>
+                            <h5 class='AZ'>Press A-Z to Guess!</h5>
                             <h5 class="winOutcome"></h5>
 
                         </div>
                                 
                             <table>
                                 <div class="row m-0 p-0  justify-content-center">
-                                    <div class="col-md-4 m-1 p-0 mr-3  border border-success" style=" background-color: rgba(94, 241, 9, 0.4); border-radius: 25px;" >
-                                        <h7 style="border-bottom: 2px black solid;">Wins</h7>
+                                    <div class="winBackground col-md-4 m-1 p-0 mr-3  border border-success">
+                                        <h7 class="winsHeader">Wins</h7>
                                         <h6 class= "wins mt-1"></h6>
                                     </div>
-                                    <div class="col-md-4 m-1 p-0 ml-3 border border-danger" style="background-color: rgb(255, 0, 0, 0.4); border-radius: 25px;">
-                                        <h7 style="border-bottom: 2px black solid;">Losses</h7>
+                                    <div class="loseBackground col-md-4 m-1 p-0 ml-3 border border-danger">
+                                        <h7 class ="lossesHeader">Losses</h7>
                                         <h6 class= "losses mt-1"></h6>
                                     </div>
                                 </tr>
