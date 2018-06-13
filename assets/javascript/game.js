@@ -155,6 +155,7 @@ function checkIfGuessCorrect(){
                     audio.src= "http://www.nationalanthems.info/"+ anthem +".mp3";
                     audio.play();
                     isPlaying = true;
+                    document.getElementById("country").innerText = word;
                     document.getElementById("info").style.display = "inline";
                     document.getElementById("pausePlay").style.display = "inline";
                     document.getElementById("source").style.display = "inline";
@@ -180,7 +181,11 @@ function checkIfGuessCorrect(){
                 document.querySelector('.losses').innerHTML = losses;
                 document.getElementById('globe').src= "assets/images/antique.jpg";
                 guessLeft = modeGuessLeft;
-                audio.pause();
+                if (isPlaying){
+                    audio.pause();
+                    isPlaying = false;
+                }
+                document.getElementById("country").innerText = "";
                 document.getElementById("info").style.display = "none";
                 document.getElementById("pausePlay").style.display = "none";
                 document.getElementById("source").style.display = "none";

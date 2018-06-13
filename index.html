@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Bungee|Niconne|Playball" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -38,13 +38,15 @@
     </audio>
 
     <div class="container text-center d-flex align-items-center justify-content-center">
+        <h5 id = "country" class = "difficulty mr-2"></h5>
         <h7 id ='info' class= "difficulty" style="display: none;">National Anthem Audio:</h7>
         
         <button onclick="playPauseAudio()"  id ='pausePlay' type='button' class='btn btn-primary btn-sm m-2' style="display: none;">
             <i class="fas fa-play fa-xs"></i>   
             <i class="fas fa-pause fa-xs"></i>
         </button>
-        <a  id ="source" style="display: none;" href="http://www.nationalanthems.info/">http://www.nationalanthems.info/</a>
+        
+        <a  id ="source" style="display: none;" href="http://www.nationalanthems.info/" target="_blank">http://www.nationalanthems.info/</a>
     </div>
 
     <div class="container justify-content-center game">
