@@ -203,7 +203,6 @@ h1{
 }
 
 #country{
-    text-transform: capitalize;
     font-weight: bold;
 }
 
@@ -230,6 +229,21 @@ html { font-size: 1rem; }
 }
 @media (min-width: 1445px) {
     html { font-size: 2rem; }
+}
+
+@media (max-width: 500px) {
+   .text-block{
+       top: 30%;
+   }
+   .title{
+        text-shadow: none;
+        background-color: rgba(255, 181, 53, 0.9);
+   }
+   .italics{
+        text-shadow: none;
+        background-color: rgba(199, 77, 39, 0.9);
+
+   }
 }
 
 @media screen and (max-width: 767px){
