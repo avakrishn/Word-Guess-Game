@@ -15,7 +15,8 @@ An interactive app that features dynamically updated HTML and CSS powered by Jav
         * Each mode corresponds to a different Javascript Array of European Countries and is associated with a specific number of guesses.
     * Press any Key to get started!
     * How to guess: 
-        * If the word you are guessing is `madonna`, then you will see this under *Current Word:* when the game starts: `_ _ _ _ _ _ _`.
+        * If the word you are guessing is `madonna`, then you will see this under *Current Word:* when the game starts: 
+        `_ _ _ _ _ _ _`.
         *  As you guess the correct letters, they will be revealed: `m a d o _  _ a`
     * *Number of Guesses Remaining* will display the # of guesses you have remaining, which is also dependent on the difficulty level you chose.
     * *Letters Already Guessed* will display the incorrect letters you have already guessed.
