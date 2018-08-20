@@ -8,7 +8,7 @@ An interactive app that features dynamically updated HTML and CSS powered by Jav
 
 
 ### **Get Started:**
-* **Play Guess the Word Game**:  https://avakrishn.github.io/Staycation/
+* **Play Guess the Word Game**:  https://avakrishn.github.io/Word-Guess-Game/
 * **Instructions**
     * The theme for this Guess the Word Game is Countries in Europe.
     * Select if you would like to play in Easy, Medium or Hard Mode. 
